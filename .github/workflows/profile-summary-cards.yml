@@ -18,12 +18,16 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: vn7n24fzkq/github-profile-summary-cards@release
-        env:
-          GITHUB_TOKEN: ${{ secrets.SUMMARY_GITHUB_TOKEN }}
-        with:
-          USERNAME: ${{ github.repository_owner }}
-          BRANCH_NAME: feat/profile-refresh
-          UTC_OFFSET: 8
-          AUTO_PUSH: true
-          THEME: github_dark
+      - name: Download profile details card
+        run: |
+          mkdir -p profile-summary-card-output/github_dark
+          curl --fail --location --retry 3 --retry-delay 5 \
+            "https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=${{ github.repository_owner }}&theme=github_dark" \
+            --output profile-summary-card-output/github_dark/0-profile-details.svg
+      - name: Commit generated card
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile-summary-card-output/github_dark/0-profile-details.svg
+          git diff --cached --quiet || git commit -m "chore: update profile summary card [skip ci]"
+          git push
