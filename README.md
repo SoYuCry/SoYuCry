@@ -8,15 +8,7 @@ Quant Trading · Open Source · SJTU
 
 ## GitHub stats
 
-![SoYuCry's Stats](https://github-readme-stats-eight-theta.vercel.app/api?username=SoYuCry&hide=contribs,issues&show_icons=true&theme=visual_studio_code)
-
-## Contribution summary
-
-![YuCry's GitHub profile summary](./profile-summary-card-output/github_dark/0-profile-details.svg)
-
-## Recent activity
-
-![YuCry's recent GitHub activity](./recent-activity.svg)
+![YuCry's GitHub stats](./profile-summary-card-output/github_dark/3-stats.svg)
 
 ## Connect with me
 
